@@ -1,40 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './App.css';
+import TableEdit from './table edit.js';
+import Navigation from './nav.js';
+import FlightsLogTable from './FlightsLogTable.js';
 
 function App() {
   const [visas, setVisas] = useState([]);
 
+
+  // Function to fetch the data from the server
+  const fetchData = async () => {
+    const result = await axios('http://localhost:5001/visas');
+    const sortedData = result.data.sort((a, b) => a.id - b.id);  // Sort by id
+    setVisas(sortedData);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios('/visas');
-      setVisas(result.data);
-    };
-    fetchData();
+    fetchData();  // Fetch data when the component mounts
   }, []);
 
   return (
     <div>
-      <h1>Visa Table</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Country</th>
-            <th>Visa Type</th>
-            <th>Duration</th>
-            <th>Requirements</th>
-          </tr>
-        </thead>
-        <tbody>
-          {visas.map((visa) => (
-            <tr key={visa.id}>
-              <td>{visa.country}</td>
-              <td>{visa.visa_type}</td>
-              <td>{visa.duration}</td>
-              <td>{visa.requirements}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Navigation/>
+      <h1>Flights</h1>
+      <TableEdit onAddSuccess={fetchData} />
+      <FlightsLogTable visas={visas} />
     </div>
   );
 }
