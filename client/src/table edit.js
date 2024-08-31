@@ -1,129 +1,60 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const TableEdit = ({ onAddSuccess }) => {
-  const [removeByIdValue, setRemoveByIdValue] = useState('');
-  const [valueAdd, setValueAdd] = useState({
-    country: '',
-    visa: '',
-    startDate: '',
-    endDate: '',
-  });
+const TableEdit = ({ countriesVisas, onAddSuccess, onDeleteSuccess }) => {
+  const [countryVisaId, setCountryVisaId] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [deleteRowId, setDeleteRowId] = useState('');
 
-  // Handle input changes for adding a row
-  const handleAddInputChange = (event) => {
-    const { name, value } = event.target;
-    setValueAdd((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  // Handle click to add a row
-  const handleAddClick = async (event) => {
-    event.preventDefault();
+  const handleAddRow = async () => {
     try {
-      const response = await fetch('http://localhost:5001/visas', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(valueAdd)
+      await axios.post('http://localhost:5001/flights_log', {
+        country_visa_id: countryVisaId,
+        start_date: startDate,
+        end_date: endDate,
       });
-      if (response.ok) {
-        console.log('Visa added successfully');
-        onAddSuccess();  // Trigger data refresh
-      } else {
-        console.error('Failed to add visa');
-        alert('Error adding visa');
-      }
-    } catch (err) {
-      console.error(err);
-      alert('Error adding visa');
-    }
-  };
-
-  // Handle input changes for removing a row by ID
-  const handleRemoveByIdChange = (event) => {
-    setRemoveByIdValue(event.target.value);
-  };
-
-  // Handle click to remove a row
-  const handleRemoveClick = async () => {
-    if (!removeByIdValue) {
-      alert('Please enter a valid ID');
-      return;
-    }
-  
-    const deleteUrl = `http://localhost:5001/visas/${removeByIdValue}`;
-    console.log('Attempting to delete row with URL:', deleteUrl);  // Log the URL
-  
-    try {
-      const response = await fetch(deleteUrl, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        console.log(`Row with ID ${removeByIdValue} has been deleted.`);
-        setRemoveByIdValue('');
-        onAddSuccess();  // Trigger data refresh after deletion
-      } else {
-        console.error('Failed to delete row');
-        setRemoveByIdValue('');
-        alert(`Could not delete row number ${removeByIdValue}, make sure that this row exists`)
-      }
+      onAddSuccess();  // Fetch data again after adding a row
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error adding row:', error);
+    }
+  };
+
+  const handleDeleteRow = async () => {
+    try {
+      await axios.delete(`http://localhost:5001/flights_log/${deleteRowId}`);
+      onDeleteSuccess();  // Fetch data again after deleting a row
+    } catch (error) {
+      console.error('Error deleting row:', error);
     }
   };
 
   return (
     <div>
-      <button className='tableButtons' onClick={handleAddClick}>Add row</button>
-      <span> 🌍</span>
+      <select 
+        value={countryVisaId} 
+        onChange={(e) => setCountryVisaId(e.target.value)}
+      >
+        <option value="">Select Country</option>
+        {countriesVisas.map(item => (
+          <option key={item.id} value={item.id}>
+            {item.country_name}
+          </option>
+        ))}
+      </select>
       <input
         className='addRowInputs'
-        type='text'
-        name='country'
-        value={valueAdd.country}
-        onChange={handleAddInputChange}
-        placeholder='country'
+        type="date"
+        value={startDate}
+        onChange={(e) => setStartDate(e.target.value)}
       />
-      <span>🛃</span>
       <input
         className='addRowInputs'
-        type='text'
-        name='visa'
-        value={valueAdd.visa}
-        onChange={handleAddInputChange}
-        placeholder='visa'
+        type="date"
+        value={endDate}
+        onChange={(e) => setEndDate(e.target.value)}
       />
-      <span>🛫</span>
-      <input
-        className='addRowInputs'
-        type='date'
-        name='startDate'
-        value={valueAdd.startDate}
-        onChange={handleAddInputChange}
-        placeholder='start date'
-      />
-      <span>🛬</span>
-      <input
-        className='addRowInputs'
-        type='date'
-        name='endDate'
-        value={valueAdd.endDate}
-        onChange={handleAddInputChange}
-        placeholder='end date'
-      />
-
-      <br/><br/>
-
-      <button className='tableButtons' onClick={handleRemoveClick}>Remove row</button>
-      <input
-        type='number'
-        value={removeByIdValue}
-        onChange={handleRemoveByIdChange}
-        placeholder="Enter id of row"
-      />
+      <button className='tableButtons' onClick={handleAddRow}>Add Row</button>
     </div>
   );
 };
