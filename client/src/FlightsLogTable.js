@@ -41,11 +41,11 @@ const FlightsLogTable = ({ visas, countriesVisas, onAddSuccess, onDeleteSuccess 
     <div>
       <div className='FlightsLogTableBar'>
         <select 
-          className='addRowInputs'
+          className='FlightsLogTableSelectInput'
           value={countryVisaId} 
           onChange={(e) => setCountryVisaId(e.target.value)}
         >
-          <option value="">Select Country</option>
+          <option className='addRowInputs' value="">Select Country</option>
           {countriesVisas.map(item => (
             <option key={item.id} value={item.id}>
               {item.country_name} ({item.visa_name})
