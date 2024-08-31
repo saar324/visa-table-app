@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import TableEdit from './table edit.js';
 import Navigation from './nav.js';
 import FlightsLogTable from './FlightsLogTable.js';
 
@@ -45,8 +44,12 @@ function App() {
     <div>
       <Navigation />
       <h1>Flights</h1>
-      <TableEdit countriesVisas={countriesVisas} onAddSuccess={fetchFlightsLog} />
-      <FlightsLogTable visas={visas} onAddSuccess={fetchFlightsLog} />
+      <FlightsLogTable 
+        visas={visas} 
+        countriesVisas={countriesVisas} 
+        onAddSuccess={fetchFlightsLog} 
+        onDeleteSuccess={fetchFlightsLog} 
+      />
     </div>
   );
 }
