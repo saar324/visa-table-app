@@ -39,8 +39,9 @@ const FlightsLogTable = ({ visas, countriesVisas, onAddSuccess, onDeleteSuccess 
 
   return (
     <div>
-      <div>
+      <div className='FlightsLogTableBar'>
         <select 
+          className='addRowInputs'
           value={countryVisaId} 
           onChange={(e) => setCountryVisaId(e.target.value)}
         >
@@ -52,23 +53,24 @@ const FlightsLogTable = ({ visas, countriesVisas, onAddSuccess, onDeleteSuccess 
           ))}
         </select>
         <input
+          className='addRowInputs'
           type="date"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
         />
         <input
+          className='addRowInputs'
           type="date"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <button onClick={handleAddRow}>Add Row</button>
+        <button className='tableButtons' onClick={handleAddRow}>Add Row</button>
       </div>
 
       <table>
         <thead>
           <tr>
             <th>Row</th>
-            <th>ID</th>
             <th>Country</th>
             <th>Visa</th>
             <th>Start Date</th>
@@ -81,13 +83,12 @@ const FlightsLogTable = ({ visas, countriesVisas, onAddSuccess, onDeleteSuccess 
           {visas.map((visa, index) => (
             <tr key={visa.id}>
               <td>{index + 1}</td>
-              <td>{visa.id}</td>
               <td>{visa.country_name}</td>
               <td>{visa.visa_name}</td>
               <td>{formatDate(visa.start_date)}</td>
               <td>{formatDate(visa.end_date)}</td>
               <td>{visa.duration}</td>
-              <td><button onClick={() => handleDeleteRow(visa.id)}>Delete</button></td>
+              <td><button className='FlightsLogTableDeleteButton' onClick={() => handleDeleteRow(visa.id)}>Delete</button></td>
             </tr>
           ))}
         </tbody>
