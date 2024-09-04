@@ -1,23 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 const Navigation = () => {
-    return (
-        <nav className='navbar'>
-            <ul className='nav_items'>
-                <li className='nav_item'>
-                    <Router to ="/">Flights ✈️</Router>
-                </li>
-                <li className='nav_item'>
-                    <Router to ="/">Prediction 🧮</Router>
-                </li>
-                <li className='nav_item'>
-                    <Router to ="/">Log Out 🔑</Router>
-                </li>
-            </ul>
-        </nav>
-    );
+  return (
+    <nav className='navbar'>
+      <ul className='nav_items'>
+        <li className='nav_item'>
+          <Link to="/FlightsLogTable">Flights ✈️</Link>
+        </li>
+        <li className='nav_item'>
+          <Link to="/Prediction">Prediction 🧮</Link>
+        </li>
+        <li className='nav_item'>
+          <Link to="/LogIn">Log Out 🔑</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Navigation;

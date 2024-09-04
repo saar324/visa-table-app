@@ -70,6 +70,7 @@ const FlightsLogTable = () => {
 
   return (
     <div>
+      <h1>Flights</h1>
       <div className='FlightsLogTableBar'>
         <select 
           className='FlightsLogTableSelectInput'

@@ -1,15 +1,26 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navigation from './nav.js';
 import FlightsLogTable from './FlightsLogTable.js';
+import Prediction from './Prediction.js';
+import LogIn from './LogIn.js';
 
 function App() {
   return (
-    <div>
-      <Navigation />
-      <h1>Flights</h1>
-      <FlightsLogTable />
-    </div>
+    <Router>
+      <div>
+        <Navigation />
+        <Routes>
+          {/* Define routes for each page */}
+          <Route path="/FlightsLogTable" element={<FlightsLogTable />} />
+          <Route path="/Prediction" element={<Prediction />} />
+          <Route path="/LogIn" element={<LogIn />} />
+          
+          <Route path="/" element={<LogIn />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
