@@ -2,111 +2,13 @@ body, html{
     background-color: #000000;
 }
 
+/* theme color */
 *{
     color: rgb(130, 130, 130);
 }
 
-/* theme color */
-.nav_item:hover{
-    color: #ff00e6;
-}
-.tableButtons{
-    background-color: #ff00e6;
-}
-
 /* text format */
-
 h1{
     font-family: 'Courier New', Courier, monospace;
-}
-
-table {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
-}
-
-.nav_item{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
-}
-
-
-/* table foramt */
-th{
-    border: 1px solid;
-    color: rgb(200, 200, 200);
-    border-color: rgb(154, 154, 154);
-}
-
-td{
-    border: 1px solid;
-    text-align: center;
-}
-
-th {
-    background-color: rgb(100, 100, 100);
-}
-
-.tableButtons{
-    color: black;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 5px;
-    border-style: solid;
-}
-.tableButtons:hover{
-    background-color: rgb(200, 200, 200);
-}
-
-
-/* table edit */
-.addRowInputs{
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 70px;
-    height: 13px;
-    margin-right: 10px;
-}
-
-.FlightsLogTableSelectInput{
-    margin-right: 10px;
-}
-
-
-/* Navigation */
-.navbar{
-    display: flex;
-    background-color: rgb(100, 100, 100);
-    align-items: center;
-    justify-content: center;
-    border: 5px;
-    border-radius: 10px;
-    height: 40px;
-}
-
-.nav_items{
-    display: flex;
-    list-style-type: none;
-}
-
-.nav_item{
-    display: flex;
-    cursor: pointer;
-    margin: 0 40px;
-    color: #000000;
-    align-items: center;
-}
-
-
-.FlightsLogTableBar{
-    margin-bottom: 10px;
-}
-
-.FlightsLogTableDeleteButton{
-    color: rgb(200, 200, 200);
-    background-color: rgb(100, 100, 100);
-    border-color: black;
-    border-width: 2px;
-    border-radius: 5px;
-    border-style: solid;
+    color: #ff00e6;
 }

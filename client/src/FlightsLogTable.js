@@ -70,7 +70,7 @@ const FlightsLogTable = () => {
 
   return (
     <div>
-      <h1>Flights</h1>
+      <h1>Flights ✈️</h1>
       <div className='FlightsLogTableBar'>
         <select 
           className='FlightsLogTableSelectInput'
@@ -80,7 +80,7 @@ const FlightsLogTable = () => {
           <option className='addRowInputs' value="">Select Country</option>
           {countriesVisas.map(item => (
             <option key={item.id} value={item.id}>
-              {item.country_name} ({item.visa_name})
+              {item.country_name}
             </option>
           ))}
         </select>

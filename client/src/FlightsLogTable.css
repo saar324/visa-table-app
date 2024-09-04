@@ -1,32 +1,4 @@
-body, html{
-    background-color: #000000;
-}
-
-*{
-    color: rgb(130, 130, 130);
-}
-
-/* theme color */
-.nav_item:hover{
-    color: #ff00e6;
-    border-color: white;
-}
-.tableButtons{
-    background-color: #ff00e6;
-}
-
-/* text format */
-
-h1{
-    font-family: 'Courier New', Courier, monospace;
-}
-
 table {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
-}
-
-.nav_item{
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
 }
@@ -48,13 +20,17 @@ th {
     background-color: rgb(100, 100, 100);
 }
 
+
+/* buttons */
 .tableButtons{
     color: black;
     border-color: black;
+    background-color: #ff00e6;
     border-width: 2px;
     border-radius: 5px;
     border-style: solid;
 }
+
 .tableButtons:hover{
     background-color: rgb(200, 200, 200);
 }
@@ -73,32 +49,6 @@ th {
     margin-right: 10px;
 }
 
-
-/* Navigation */
-.navbar{
-    display: flex;
-    background-color: rgb(100, 100, 100);
-    align-items: center;
-    justify-content: center;
-    border: 5px;
-    border-radius: 10px;
-    height: 40px;
-}
-
-.nav_items{
-    display: flex;
-    list-style-type: none;
-}
-
-.nav_item{
-    display: flex;
-    cursor: pointer;
-    margin: 0 40px;
-    color: #000000;
-    align-items: center;
-}
-
-
 .FlightsLogTableBar{
     margin-bottom: 10px;
 }
@@ -110,4 +60,8 @@ th {
     border-width: 2px;
     border-radius: 5px;
     border-style: solid;
+}
+
+.FlightsLogTableDeleteButton:hover{
+    background-color: #ff00e6;
 }
