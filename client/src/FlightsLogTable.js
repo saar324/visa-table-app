@@ -69,7 +69,7 @@ const FlightsLogTable = () => {
   };
 
   return (
-    <div>
+    <div className='FlightsLogTablePage'>
       <h1>Flights ✈️</h1>
       <div className='FlightsLogTableBar'>
         <select 

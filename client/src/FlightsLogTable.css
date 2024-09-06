@@ -1,3 +1,10 @@
+.FlightsLogTablePage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 table {
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;

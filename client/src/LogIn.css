@@ -1,17 +1,47 @@
-/* inputs */
-.inputs {
-    justify-content: center;
-    align-items: center;
-}
-
-.loginInUserNmae, .logInPassword{
-    display: flex;
-    margin-top: 30px;
-}
-
-/* text */
-.form{
+/* Center form */
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Center inputs and button */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adds space between inputs and button */
+}
+
+/* Input fields and button styling */
+.loginUserName, .logInPassword, .logInSubmit {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Submit button specific styling */
+.logInSubmit {
+    cursor: pointer;
+    background-color: #ff00e6;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.logInSubmit:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+/* Register */
+span{
+    font-family: 'Courier New', Courier, monospace;
+}
+span:hover{
+    color: #ff00e6;
 }
