@@ -7,7 +7,7 @@ const Navigation = () => {
     <nav className='navbar'>
       {/* Left section for profile or user info */}
       <div className='nav_left'>
-        <img src="/path_to_icon_or_image" alt="Profile" className='profile_icon' />
+        <span>🙎‍♂️</span>
         <span className='user_name'>Hello Saar</span>
       </div>
 

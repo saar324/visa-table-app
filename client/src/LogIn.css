@@ -39,9 +39,9 @@
 }
 
 /* Register */
-span{
+span a{
     font-family: 'Courier New', Courier, monospace;
 }
-span:hover{
+span a:hover{
     color: #ff00e6;
 }

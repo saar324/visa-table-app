@@ -11,7 +11,7 @@ const FlightsLogTable = () => {
 
   const fetchFlightsLog = async () => {
     try {
-      const result = await axios.get('http://localhost:5001/flights_log');
+      const result = await axios.get('http://localhost:5001/api/flights/flights_log');
       if (Array.isArray(result.data)) {
         const sortedData = result.data.sort((a, b) => a.id - b.id);
         setVisas(sortedData);
@@ -25,7 +25,7 @@ const FlightsLogTable = () => {
 
   const fetchCountriesVisas = async () => {
     try {
-      const result = await axios.get('http://localhost:5001/countries_visas');
+      const result = await axios.get('http://localhost:5001/api/flights/countries_visas');
       if (Array.isArray(result.data)) {
         setCountriesVisas(result.data);
       } else {
@@ -43,7 +43,7 @@ const FlightsLogTable = () => {
 
   const handleAddRow = async () => {
     try {
-      await axios.post('http://localhost:5001/flights_log', {
+      await axios.post('http://localhost:5001/api/flights/flights_log', {
         country_visa_id: countryVisaId,
         start_date: startDate,
         end_date: endDate,
@@ -56,7 +56,7 @@ const FlightsLogTable = () => {
 
   const handleDeleteRow = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/flights_log/${id}`);
+      await axios.delete(`http://localhost:5001/api/flights/flights_log/${id}`);
       fetchFlightsLog(); // Refresh data after deletion
     } catch (error) {
       console.error('Error deleting row:', error);
