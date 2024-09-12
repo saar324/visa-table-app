@@ -1,1 +1,48 @@
-node_modules
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build directories
+dist/
+build/
+public/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Test coverage
+coverage/
+
+# Next.js / Nuxt.js (if applicable)
+.next/
+.nuxt/
+
+# Miscellaneous
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Mac OS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
