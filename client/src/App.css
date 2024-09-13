@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Varela Round';
+    src: url('./fonts/VarelaRound-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body, html{
     background-color: #000000;
 }
@@ -9,6 +16,6 @@ body, html{
 
 /* text format */
 h1{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Varela Round';
     color: #ff00e6;
 }
