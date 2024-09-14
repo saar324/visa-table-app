@@ -21,7 +21,7 @@ const Navigation = () => {
             <Link to="/Prediction">Prediction 🧮</Link>
           </li>
           <li className='nav_item'>
-            <Link to="/LogIn">Log Out 🔑</Link>
+            <Link to="/LogIn">Log Out 🔒</Link>
           </li>
         </ul>
       </div>

@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-style: solid;
+    border-color: #ff00e6;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 30px;
 }
 
 .registerUserName , .registerPassword , .registerPasswordConfirmation, .SubmitRegister, .registerName{
