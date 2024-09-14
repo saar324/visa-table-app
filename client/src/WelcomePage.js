@@ -5,13 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const WelcomePage = () => {
     const navigate = useNavigate();
 
-    const goToLogIn = () => {
-        navigate('./LogIn');
-    };
-
-    const goToRegister = () =>{
-        navigate('./Register');
-    }
+    const goToLogIn = () => {navigate('./LogIn');};
+    const goToRegister = () =>{navigate('./Register');};
 
     return (
         <div className='welcome-container'>
@@ -32,15 +27,15 @@ const WelcomePage = () => {
             <div className='benefits-section'>
                 <h2>🚀 Why Use Our Tool?</h2>
                 <ul>
-                    <li>✅ Plan your trips ahead with accurate predictions</li>
-                    <li>✅ Avoid overstaying fines and penalties</li>
-                    <li>✅ Easy to use with a simple, modern interface</li>
-                    <li>✅ Get predictions for Schengen and other countries</li>
+                    <li>🗓️ Plan your trips ahead with accurate predictions</li>
+                    <li>💸 Avoid overstaying fines and penalties</li>
+                    <li>🖥️ Easy to use with a simple, modern interface</li>
+                    <li>🌍 Get predictions for Schengen and other countries</li>
                 </ul>
             </div>
 
             <div className='cta-section'>
-                <h2>✈️ Start Your Journey Today!</h2>
+                <h2>✈️ Start Your Journey [FOR FREE 💵] Today!</h2>
                 <p>Sign up ✏️ and explore how Time Limit Calculator can make your travel planning 🌍 easier than ever ✨.</p>
                 <button className='cta-btn' onClick={goToRegister}>Sign Up for Free</button>
             </div>

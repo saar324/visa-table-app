@@ -5,24 +5,28 @@ import Navigation from './nav.js';
 import FlightsLogTable from './FlightsLogTable.js';
 import Prediction from './Prediction.js';
 import LogIn from './LogIn.js';
-import Register from './Register';
-import WelcomePage from './WelcomePage';
+import Register from './Register.js';
+import WelcomePage from './WelcomePage.js';
+import Footer from './Footer.js';
 
 function App() {
-  const location = useLocation(); // Ensure this is inside the Router context
+  const location = useLocation();
 
   return (
-    <div>
-      {/* Conditional rendering of Navigation */}
+    <div id="wrapper">
+      {/* Navigation should appear on all pages except: */}
       {location.pathname !== '/WelcomePage' && location.pathname !== '/LogIn' && location.pathname !== '/' && location.pathname !== '/Register' && <Navigation />}
-      <Routes>
-        <Route path="/FlightsLogTable" element={<FlightsLogTable />} />
-        <Route path="/Prediction" element={<Prediction />} />
-        <Route path="/LogIn" element={<LogIn />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/WelcomePage" element={<WelcomePage />} />
-        <Route path="/" element={<WelcomePage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/FlightsLogTable" element={<FlightsLogTable />} />
+          <Route path="/Prediction" element={<Prediction />} />
+          <Route path="/LogIn" element={<LogIn />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/WelcomePage" element={<WelcomePage />} />
+          <Route path="/" element={<WelcomePage />} />
+        </Routes>
+      </main>
+      <Footer />  {/* Footer appears on all pages */}
     </div>
   );
 }
