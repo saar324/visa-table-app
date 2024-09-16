@@ -9,7 +9,15 @@ const flightsRoutes = require('./routes/flights');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Adjust the origin if needed (React app on 3000)
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+}));
+
 app.use(bodyParser.json()); // for parsing application/json
 
 // Routes

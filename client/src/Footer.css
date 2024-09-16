@@ -1,9 +1,12 @@
 .footer {
     background-color: #ff00e6;
-    color: white;
     text-align: center;
     position: relative;
     width: 100%; /* Full width */
-    height: 25px;
+    height: 20px;
+}
+
+p {
+    color: white;
     font-size: 14px;
 }

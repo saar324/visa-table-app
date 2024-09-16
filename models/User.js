@@ -7,13 +7,13 @@ class User {
       return result.rows[0]; // Return the user if found
     }
   
-    static async createUser(username, hashedPassword) {
+    static async createUser(username, name, email, hashedPassword) {
       const result = await pool.query(
-        'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
-        [username, hashedPassword]
+        'INSERT INTO users (username, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
+        [username, name, email, hashedPassword]
       );
       return result.rows[0]; // Return the created user
     }
-  }
-  
-  module.exports = User;
+}
+
+module.exports = User;

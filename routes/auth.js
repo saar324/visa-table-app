@@ -8,10 +8,10 @@ const router = express.Router();
 // Register route
 router.post('/register', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { userName, name, email, password } = req.body;
 
     // Check if user already exists
-    const existingUser = await User.findByUsername(username);
+    const existingUser = await User.findByUsername(userName);
     if (existingUser) {
       return res.status(400).send('Username already exists');
     }
@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
     // Hash password and save new user
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const newUser = await User.createUser(username, hashedPassword);
+    const newUser = await User.createUser(userName, name, email, hashedPassword);
 
     res.status(201).json({ message: 'User registered', user: newUser });
   } catch (err) {

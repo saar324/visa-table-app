@@ -10,7 +10,7 @@
     padding: 30px;
 }
 
-.registerUserName , .registerPassword , .registerPasswordConfirmation, .SubmitRegister, .registerName{
+.inputField , .SubmitRegister{
     width: 250px;
     padding: 10px;
     border: 1px solid #ccc;
