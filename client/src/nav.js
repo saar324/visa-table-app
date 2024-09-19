@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css';
 
+
 const Navigation = () => {
+
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    // Fetch the username from localStorage
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);  // Set the username from localStorage
+    }
+  }, []);
+
   return (
     <nav className='navbar'>
       {/* Left section for profile or user info */}
       <div className='nav_left'>
         <span>🙎‍♂️</span>
-        <span className='user_name'>Hello Saar</span>
+        <span className='user_name'>{`Hello ${username}`}</span>
       </div>
 
       {/* Centered navigation items */}

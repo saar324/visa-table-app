@@ -12,7 +12,7 @@ const WelcomePage = () => {
         <div className='welcome-container'>
             <div className='welcome-content'>
                 <h1>Welcome to 🕑 Time Limit Calculator 🧮</h1>
-                <p>Predict and manage 📊 your travel days with ease 🌍. Perfect for travelers and digital nomads! 🎒</p>
+                <p className='openText'>Predict and manage 📊 your travel days with ease 🌍. Perfect for travelers and digital nomads! 🎒</p>
                 <button className='login-btn' onClick={goToLogIn}>Log In</button>
             </div>
             

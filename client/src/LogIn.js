@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LogIn.css';
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
   
     const navigate = useNavigate();
 
@@ -20,16 +19,19 @@ const LogIn = () => {
           username,
           password,
         });
-        
-        setSuccessMessage('Logged in successfully!');
-        navigate('/FlightsLogTable');
-        
-        // Store the token in localStorage or cookies for future requests
-        localStorage.setItem('auth-token', res.data.token);
-        
+
+    // Store username in localStorage
+    localStorage.setItem('username', username);  // Use username
+
+    navigate('/FlightsLogTable');
+
+    // Store the token in localStorage
+    localStorage.setItem('auth-token', res.data.token);
+
       } catch (error) {
         // Handle error when login fails
-        setErrorMessage('Login failed. Invalid credentials.');
+        setErrorMessage('Check your UserName and Password.');
+        console.error(error);
       }
     };
 
@@ -43,7 +45,6 @@ const LogIn = () => {
                 <span><Link to="/Register">Register</Link></span>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         </div>
     );
 };

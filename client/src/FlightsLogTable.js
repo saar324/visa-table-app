@@ -48,6 +48,9 @@ const FlightsLogTable = () => {
         start_date: startDate,
         end_date: endDate,
       });
+      setCountriesVisas([]);
+      setStartDate('');
+      setEndDate('');
       fetchFlightsLog(); // Refresh data after adding a row
     } catch (error) {
       console.error('Error adding row:', error);
@@ -55,13 +58,15 @@ const FlightsLogTable = () => {
   };
 
   const handleDeleteRow = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5001/api/flights/flights_log/${id}`);
-      fetchFlightsLog(); // Refresh data after deletion
-    } catch (error) {
-      console.error('Error deleting row:', error);
-    }
-  };
+    if (window.confirm("Are you sure you want to delete this row?")) {
+      try {
+        await axios.delete(`http://localhost:5001/api/flights/flights_log/${id}`);
+        fetchFlightsLog(); // Refresh data after deletion
+      } catch (error) {
+        console.error('Error deleting row:', error);
+      }
+    };
+  }
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };

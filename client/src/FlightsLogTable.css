@@ -33,7 +33,7 @@ th {
 .tableButtons{
     color: black;
     border-color: black;
-    background-color: #ff00e6;
+    background-color: #00ffff;
     border-width: 2px;
     border-radius: 5px;
     border-style: solid;
@@ -71,5 +71,6 @@ th {
 }
 
 .FlightsLogTableDeleteButton:hover{
-    background-color: #ff00e6;
+    background-color: #00ffff;
+    color: black;
 }

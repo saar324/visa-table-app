@@ -1,40 +1,45 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
-const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name:'',
     userName:'',
     email:'',
     password:''
-});
+  });
 
-const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
-const handleChange = (e) => {
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('http://localhost:5001/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-
+  
+      // Parse the response data
       const data = await response.json();
-      if (data.success) {
-        // Handle successful registration (e.g., redirect to login)
+  
+      // Check if response was successful
+      if (response.ok) {  // 'response.ok' checks if status is in the 200-299 range
         console.log('User registered successfully');
-        navigate('/LogIn');
+        navigate('/LogIn');  // Navigate to the login page
       } else {
-        // Handle registration failure
-        console.log(data.message);
+        console.log(data.message);  // Handle registration failure
+        setErrorMessage(`Error to register - ${data.message}`)
       }
     } catch (error) {
       console.error('Error during registration', error);
@@ -80,10 +85,10 @@ const handleChange = (e) => {
         <button className='SubmitRegister' onClick={handleSubmit}>
           Register
         </button>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
     </div>
   );
 }
-
 
 export default Register;

@@ -6,7 +6,7 @@
     justify-content: center;
     text-align: center;
     border-style: solid;
-    border-color: #ff00e6;
+    border-color: #00ffff;
     border-width: 1px;
     border-radius: 15px;
     padding: 30px;
@@ -32,8 +32,8 @@
 /* Submit button specific styling */
 .logInSubmit {
     cursor: pointer;
-    background-color: #ff00e6;
-    color: white;
+    background-color: #00ffff;
+    color: black;
     border: none;
     transition: background-color 0.3s ease;
 }
@@ -47,5 +47,5 @@ span a{
     font-family: 'Courier New', Courier, monospace;
 }
 span a:hover{
-    color: #ff00e6;
+    color: #00ffff;
 }

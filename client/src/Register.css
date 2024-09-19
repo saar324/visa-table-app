@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     border-style: solid;
-    border-color: #ff00e6;
+    border-color: #00ffff;
     border-width: 1px;
     border-radius: 15px;
     padding: 30px;
@@ -27,7 +27,7 @@
 
 .SubmitRegister{
     cursor: pointer;
-    background-color: #ff00e6;
+    background-color: #00ffff;
     color: white;
     border: none;
     transition: background-color 0.3s ease;    
