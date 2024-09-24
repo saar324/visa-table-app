@@ -22,7 +22,7 @@ const LogIn = () => {
 
     // Store username in localStorage
     localStorage.setItem('username', username);  // Use username
-
+    console.log('User LogIn successfully')
     navigate('/FlightsLogTable');
 
     // Store the token in localStorage

@@ -52,7 +52,7 @@ body {
 
 .info-section, .benefits-section, .cta-section {
     text-align: center;
-    background: linear-gradient(135deg, #00ffff 0%, #00ffff 100%);
+    background-color: #00ffff;
     padding: 30px;
     border-radius: 30px;
     animation: fadeIn 1.2s ease-in-out;

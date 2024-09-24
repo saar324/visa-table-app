@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './nav.css';
 
 
@@ -14,6 +14,13 @@ const Navigation = () => {
       setUsername(storedUsername);  // Set the username from localStorage
     }
   }, []);
+
+  const navigate = useNavigate();
+  const handelLogOutClick = () => {
+    if (window.confirm("Are you sure you want to Log Out?")){
+      navigate('/LogIn');
+    }
+  };
 
   return (
     <nav className='navbar'>
@@ -32,8 +39,7 @@ const Navigation = () => {
           <li className='nav_item'>
             <Link to="/Prediction">Prediction 🧮</Link>
           </li>
-          <li className='nav_item'>
-            <Link to="/LogIn">Log Out 🔒</Link>
+          <li className='nav_item' onClick={handelLogOutClick}>Log Out 🔒
           </li>
         </ul>
       </div>

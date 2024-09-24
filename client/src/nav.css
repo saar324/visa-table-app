@@ -48,14 +48,13 @@
     align-items: center;
 }
 
-.nav_item a {
-    font-family: Arial, Helvetica, sans-serif;
+.nav_item a, .nav_item {
     font-size: medium;
     cursor: pointer;
     color: #000000;
     text-decoration: none;
 }
 
-.nav_item a:hover {
+.nav_item a:hover, .nav_item:hover {
     color: #00ffff;
 }

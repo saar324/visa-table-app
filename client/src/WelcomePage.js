@@ -6,7 +6,7 @@ const WelcomePage = () => {
     const navigate = useNavigate();
 
     const goToLogIn = () => {navigate('./LogIn');};
-    const goToRegister = () =>{navigate('./Register');};
+    const goToRegister = () => {navigate('./Register');};
 
     return (
         <div className='welcome-container'>
