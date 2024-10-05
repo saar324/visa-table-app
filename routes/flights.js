@@ -11,6 +11,8 @@ router.get('/flights_log', async (req, res) => {
       FROM flights_log
       JOIN countries_visas ON flights_log.country_visa_id = countries_visas.id
       JOIN stay_limits ON countries_visas.stay_limit_id = stay_limits.id
+      JOIN users ON users.id = flights_log.user_id
+      WHERE username = 'sa111'
       ORDER BY flights_log.id ASC;
     `;
     const result = await pool.query(query);
@@ -35,14 +37,25 @@ router.get('/countries_visas', async (req, res) => {
 
 // Add a new flight log
 router.post('/flights_log', async (req, res) => {
-  const { country_visa_id, start_date, end_date } = req.body;
+  const { country_visa_id, start_date, end_date, username } = req.body;
   try {
+    // First, retrieve the user_id based on the username from the users table
+    const userQuery = `SELECT id FROM users WHERE username = $1`;
+    const userResult = await pool.query(userQuery, [username]);
+    
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    const user_id = userResult.rows[0].id;
+
+    // Now insert the flight log using the retrieved user_id
     const query = `
-      INSERT INTO flights_log (country_visa_id, start_date, end_date) 
-      VALUES ($1, $2, $3) 
+      INSERT INTO flights_log (country_visa_id, start_date, end_date, user_id) 
+      VALUES ($1, $2, $3, $4) 
       RETURNING *;
     `;
-    const result = await pool.query(query, [country_visa_id, start_date, end_date]);
+    const result = await pool.query(query, [country_visa_id, start_date, end_date, user_id]);
     res.status(201).json(result.rows[0]);
   } catch (err) {
     console.error('Error inserting row:', err);

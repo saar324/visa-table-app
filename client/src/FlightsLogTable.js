@@ -9,6 +9,7 @@ const FlightsLogTable = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+
   const fetchFlightsLog = async () => {
     try {
       const result = await axios.get('http://localhost:5001/api/flights/flights_log');
@@ -47,6 +48,7 @@ const FlightsLogTable = () => {
         country_visa_id: countryVisaId,
         start_date: startDate,
         end_date: endDate,
+        username: localStorage.getItem('username'),
       });
       setCountriesVisas([]);
       setStartDate('');
