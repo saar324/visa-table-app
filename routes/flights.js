@@ -2,9 +2,19 @@ const express = require('express');
 const pool = require('../config/db'); // Import PostgreSQL pool connection
 const router = express.Router();
 
-// Fetch all flight logs
+
+// Fetch all flight logs with dynamic username
 router.get('/flights_log', async (req, res) => {
   try {
+    // Extract the username from the query parameters
+    const { username } = req.query;
+
+    // Ensure username is provided
+    if (!username) {
+      return res.status(400).json({ error: 'Username is required' });
+    }
+
+    // Adjusted query with parameterized username
     const query = `
       SELECT flights_log.id, countries_visas.country_name, stay_limits.visa_name, 
              flights_log.start_date, flights_log.end_date, flights_log.duration
@@ -12,10 +22,12 @@ router.get('/flights_log', async (req, res) => {
       JOIN countries_visas ON flights_log.country_visa_id = countries_visas.id
       JOIN stay_limits ON countries_visas.stay_limit_id = stay_limits.id
       JOIN users ON users.id = flights_log.user_id
-      WHERE username = 'sa111'
+      WHERE users.username = $1
       ORDER BY flights_log.id ASC;
     `;
-    const result = await pool.query(query);
+
+    // Execute the query and pass the username as a parameter
+    const result = await pool.query(query, [username]);
     res.json(result.rows);
   } catch (err) {
     console.error(err.message);

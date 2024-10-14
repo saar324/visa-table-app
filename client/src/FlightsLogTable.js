@@ -12,7 +12,16 @@ const FlightsLogTable = () => {
 
   const fetchFlightsLog = async () => {
     try {
-      const result = await axios.get('http://localhost:5001/api/flights/flights_log');
+      // Retrieve the value from localStorage
+      const storedUsername = localStorage.getItem('username');
+  
+      // Send the value in the request as a query parameter
+      const result = await axios.get('http://localhost:5001/api/flights/flights_log', {
+        params: {
+          username: storedUsername,  // Use the correct query parameter key
+        }
+      });
+  
       if (Array.isArray(result.data)) {
         const sortedData = result.data.sort((a, b) => a.id - b.id);
         setVisas(sortedData);
@@ -48,7 +57,6 @@ const FlightsLogTable = () => {
         country_visa_id: countryVisaId,
         start_date: startDate,
         end_date: endDate,
-        username: localStorage.getItem('username'),
       });
       setCountriesVisas([]);
       setStartDate('');
