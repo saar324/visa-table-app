@@ -12,13 +12,10 @@ const FlightsLogTable = () => {
 
   const fetchFlightsLog = async () => {
     try {
-      // Retrieve the value from localStorage
-      const storedUsername = localStorage.getItem('username');
-  
       // Send the value in the request as a query parameter
       const result = await axios.get('http://localhost:5001/api/flights/flights_log', {
         params: {
-          username: storedUsername,  // Use the correct query parameter key
+          username: localStorage.getItem('username'),  // Use the correct query parameter key
         }
       });
   
@@ -33,6 +30,7 @@ const FlightsLogTable = () => {
     }
   };
 
+  // Countries Combobox
   const fetchCountriesVisas = async () => {
     try {
       const result = await axios.get('http://localhost:5001/api/flights/countries_visas');
@@ -57,8 +55,8 @@ const FlightsLogTable = () => {
         country_visa_id: countryVisaId,
         start_date: startDate,
         end_date: endDate,
+        username: localStorage.getItem('username')
       });
-      setCountriesVisas([]);
       setStartDate('');
       setEndDate('');
       fetchFlightsLog(); // Refresh data after adding a row
@@ -89,7 +87,7 @@ const FlightsLogTable = () => {
       <div className='FlightsLogTableBar'>
         <select 
           className='FlightsLogTableSelectInput'
-          value={countryVisaId} 
+          value={countryVisaId}
           onChange={(e) => setCountryVisaId(e.target.value)}
         >
           <option className='addRowInputs' value="">Select Country</option>

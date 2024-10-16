@@ -43,6 +43,7 @@ const Register = () => {
       }
     } catch (error) {
       console.error('Error during registration', error);
+      setErrorMessage('Email or username already taken. Please choose another')
     }
   };
 
