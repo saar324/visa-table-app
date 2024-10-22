@@ -75,10 +75,16 @@ const FlightsLogTable = () => {
       }
     };
   }
-
+  
+  // Date format
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const date = new Date(dateString);
+    const formattedDate = 
+    String(date.getDate()).padStart(2, '0') + "/" +
+    String(date.getMonth() + 1).padStart(2, '0') + "/" +
+    date.getFullYear()
+
+    return formattedDate;
   };
 
   return (
