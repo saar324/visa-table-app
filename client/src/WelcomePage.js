@@ -11,16 +11,16 @@ const WelcomePage = () => {
     return (
         <div className='welcome-container'>
             <div className='welcome-content'>
-                <h1>Welcome to 🕑 Time Limit Calculator 🧮</h1>
-                <p className='openText'>Predict and manage 📊 your travel days with ease 🌍. Perfect for travelers and digital nomads! 🎒</p>
+                <h1>Welcome to 🕑 NomadLimit 🧮</h1>
+                <p className='openText'>Predict and manage 📊 your travel days with ease 🌍. Perfect for Travelers and Digital Nomads! 🎒</p>
                 <button className='login-btn' onClick={goToLogIn}>Log In</button>
             </div>
             
             {/* Additional info sections */}
             <div className='info-section'>
-                <h2>📝 What is Time Limit Calculator?</h2>
+                <h2>📝 NomadLimit?</h2>
                 <p>
-                    Time Limit Calculator is an intuitive tool for travelers who want to predict how many days they can stay in certain regions, like Schengen, following the 180/90 rule. This is essential for planning long-term trips, ensuring you don’t overstay.
+                    NomadLimit is an intuitive tool for Digital Nomads and travelers who want to predict how many days they can stay in certain regions, like Schengen, following the 180/90 rule. This is essential for planning long-term trips, ensuring you don’t overstay.
                 </p>
             </div>
 
