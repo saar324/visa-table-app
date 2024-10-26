@@ -11,7 +11,7 @@ const WelcomePage = () => {
     return (
         <div className='welcome-container'>
             <div className='welcome-content'>
-                <h1>Welcome to 🕑 NomadLimit 🧮</h1>
+                <h1>NomadLimit 🕑</h1>
                 <p className='openText'>Predict and manage 📊 your travel days with ease 🌍. Perfect for Travelers and Digital Nomads! 🎒</p>
                 <button className='login-btn' onClick={goToLogIn}>Log In</button>
             </div>
