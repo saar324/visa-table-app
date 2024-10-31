@@ -44,7 +44,7 @@ const Prediction = () => {
   };
 
 
-sumInDays(visas);
+sumInDays(visas, visas.visa_name);
 
 
   return (
